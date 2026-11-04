@@ -1,2 +1,2 @@
-// Public API of the language package. Wire up Langium services here next.
-export {};
+export * from './language/generated/ast.js'
+export { createSysMLServices, type SysMLServices } from './language/sysml-module.js'
