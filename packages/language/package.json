@@ -1,0 +1,21 @@
+{
+  "name": "@sysml-ide/language",
+  "version": "0.0.1",
+  "private": true,
+  "description": "SysML v2 language definition (Langium grammar, generated AST and parser)",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "langium:generate": "langium generate",
+    "langium:watch": "langium generate --watch",
+    "build": "langium generate && tsc -b tsconfig.json",
+    "clean": "rm -rf dist src/language/generated"
+  },
+  "dependencies": {
+    "langium": "^4.4.0"
+  },
+  "devDependencies": {
+    "langium-cli": "^4.4.0"
+  }
+}
