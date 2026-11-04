@@ -1,4 +1,4 @@
-grammar SysML
+grammar SysMLv2
 
 // Minimal vertical-slice subset of SysML v2 textual syntax.
 // Intentionally tiny: package, part def, part usage, connection.

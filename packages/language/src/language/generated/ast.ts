@@ -6,16 +6,16 @@
 /* eslint-disable */
 import * as langium from 'langium';
 
-export const SysMLTerminals = {
+export const SysMLv2Terminals = {
     WS: /\s+/,
     ID: /[_a-zA-Z][\w_]*/,
     ML_COMMENT: /\/\*[\s\S]*?\*\//,
     SL_COMMENT: /\/\/[^\n\r]*/,
 };
 
-export type SysMLTerminalNames = keyof typeof SysMLTerminals;
+export type SysMLv2TerminalNames = keyof typeof SysMLv2Terminals;
 
-export type SysMLKeywordNames =
+export type SysMLv2KeywordNames =
     | ":"
     | ";"
     | "connect"
@@ -26,7 +26,7 @@ export type SysMLKeywordNames =
     | "{"
     | "}";
 
-export type SysMLTokenNames = SysMLTerminalNames | SysMLKeywordNames;
+export type SysMLv2TokenNames = SysMLv2TerminalNames | SysMLv2KeywordNames;
 
 export interface Connection extends langium.AstNode {
     readonly $container: Model | Package | PartDefinition | PartUsage;
@@ -122,7 +122,7 @@ export function isPartUsage(item: unknown): item is PartUsage {
     return reflection.isInstance(item, PartUsage.$type);
 }
 
-export type SysMLAstType = {
+export type SysMLv2AstType = {
     Connection: Connection
     Model: Model
     Package: Package
@@ -131,7 +131,7 @@ export type SysMLAstType = {
     PartUsage: PartUsage
 }
 
-export class SysMLAstReflection extends langium.AbstractAstReflection {
+export class SysMLv2AstReflection extends langium.AbstractAstReflection {
     override readonly types = {
         Connection: {
             name: Connection.$type,
@@ -214,4 +214,4 @@ export class SysMLAstReflection extends langium.AbstractAstReflection {
     } as const satisfies langium.AstMetaData
 }
 
-export const reflection = new SysMLAstReflection();
+export const reflection = new SysMLv2AstReflection();

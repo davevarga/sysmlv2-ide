@@ -1,0 +1,19 @@
+{
+  "name": "@sysmlv2-ide/diagram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "elkjs": "^0.12.1",
+    "reflect-metadata": "^0.2.2",
+    "sprotty": "^1.4.0",
+    "sprotty-elk": "^1.4.0"
+  }
+}

@@ -4,22 +4,22 @@
  ******************************************************************************/
 
 import type { LangiumSharedCoreServices, LangiumCoreServices, LangiumGeneratedCoreServices, LangiumGeneratedSharedCoreServices, LanguageMetaData, Module } from 'langium';
-import { SysMLAstReflection } from './ast.js';
+import { SysMLv2AstReflection } from './ast.js';
 import { SysMLGrammar } from './grammar.js';
 
-export const SysMLLanguageMetaData = {
-    languageId: 'sysml',
-    fileExtensions: ['.sysml'],
+export const SysMLv2LanguageMetaData = {
+    languageId: 'sysmlv2',
+    fileExtensions: ['.sysmlv2'],
     caseInsensitive: false,
     mode: 'development'
 } as const satisfies LanguageMetaData;
 
-export const SysMLGeneratedSharedModule: Module<LangiumSharedCoreServices, LangiumGeneratedSharedCoreServices> = {
-    AstReflection: () => new SysMLAstReflection()
+export const SysMLv2GeneratedSharedModule: Module<LangiumSharedCoreServices, LangiumGeneratedSharedCoreServices> = {
+    AstReflection: () => new SysMLv2AstReflection()
 };
 
-export const SysMLGeneratedModule: Module<LangiumCoreServices, LangiumGeneratedCoreServices> = {
+export const SysMLv2GeneratedModule: Module<LangiumCoreServices, LangiumGeneratedCoreServices> = {
     Grammar: () => SysMLGrammar(),
-    LanguageMetaData: () => SysMLLanguageMetaData,
+    LanguageMetaData: () => SysMLv2LanguageMetaData,
     parser: {}
 };

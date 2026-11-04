@@ -1,5 +1,5 @@
 {
-  "name": "@sysml-ide/language",
+  "name": "@sysmlv2-ide/language",
   "version": "0.0.1",
   "private": true,
   "description": "SysML v2 language definition (Langium grammar, generated AST and parser)",

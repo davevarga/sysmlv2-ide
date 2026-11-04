@@ -6,11 +6,11 @@
 import type { Grammar } from 'langium';
 import { loadGrammarFromJson } from 'langium';
 
-let loadedSysMLGrammar: Grammar | undefined;
-export const SysMLGrammar = (): Grammar => loadedSysMLGrammar ?? (loadedSysMLGrammar = loadGrammarFromJson(`{
+let loadedSysMLv2Grammar: Grammar | undefined;
+export const SysMLv2Grammar = (): Grammar => loadedSysMLv2Grammar ?? (loadedSysMLv2Grammar = loadGrammarFromJson(`{
   "$type": "Grammar",
   "isDeclared": true,
-  "name": "SysML",
+  "name": "SysMLv2",
   "rules": [
     {
       "$type": "ParserRule",
