@@ -1,4 +1,4 @@
-export const SAMPLE_SYSML = `// Hard-coded demo model
+export const SAMPLE_SYSMLv2 = `// Hard-coded demo model
 package VehicleModel {
     part def Engine;
     part def Wheel;

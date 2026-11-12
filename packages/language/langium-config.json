@@ -4,7 +4,8 @@
     {
       "id": "sysmlv2",
       "grammar": "src/language/sysmlv2.langium",
-      "fileExtensions": [".sysmlv2"]
+      "fileExtensions": [".sysmlv2"],
+      "monarch": {"out":  "src/language/generated/sysmlv2.monarch.ts"}
     }
   ],
   "out": "src/language/generated"

@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.web.json",
+  "compilerOptions": {
+    "composite": false,
+    "noEmit": true,
+    "paths": { "@renderer/*": ["../src/renderer/src/*"] }
+  },
+  "include": ["./**/*.ts", "../src/renderer/**/*.ts", "../src/preload/*.d.ts"]
+}

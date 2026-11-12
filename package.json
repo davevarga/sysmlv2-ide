@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "pnpm --filter @sysmlv2-ide/language build && pnpm --filter desktop dev",
+    "test": "vitest run",
+    "test:backend": "vitest run --project backend",
+    "test:ui": "vitest run --project ui",
+    "typecheck:test": "pnpm --filter @sysmlv2-ide/language build && pnpm -r --if-present typecheck:test"
   },
   "keywords": [],
   "author": "",

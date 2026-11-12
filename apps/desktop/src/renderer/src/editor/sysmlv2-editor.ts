@@ -1,17 +1,9 @@
-import * as monaco from "monaco-editor";
-import {SYSMLV2_LANGUAGE_ID} from "./sysmlv2-language";
+import * as monaco from 'monaco-editor'
+import { SYSMLV2_LANGUAGE_ID } from './sysmlv2-language'
+import { type Sysmlv2Diagnostic } from './sysmlv2-diagnostic'
+import { RichDiagnosticHover } from './diagnostic-hover'
 
-/** UI-side diagnostic Positions are l-based, as in Monaco.*/
-export interface Sysmlv2Diagnostic {
-  message: string;
-  severity: 'error' | 'info' | 'warning';
-  startLine: number;
-  startColumn: number;
-  endLine: number;
-  endColumn: number;
-}
-
-const SEVERITY ={
+const SEVERITY = {
   error: monaco.MarkerSeverity.Error,
   warning: monaco.MarkerSeverity.Warning,
   info: monaco.MarkerSeverity.Info
@@ -22,6 +14,7 @@ const MARKER_OWNER = 'sysmlv2'
 export class Sysmlv2Editor {
   private readonly model: monaco.editor.ITextModel
   private readonly editor: monaco.editor.IStandaloneCodeEditor
+  private readonly hover: RichDiagnosticHover
 
   constructor(container: HTMLElement, initialText: string) {
     this.model = monaco.editor.createModel(
@@ -37,9 +30,10 @@ export class Sysmlv2Editor {
       fontSize: 14,
       scrollBeyondLastLine: false
     })
+    this.hover = new RichDiagnosticHover(this.model)
   }
 
-  getText(): string{
+  getText(): string {
     return this.model.getValue()
   }
 
@@ -48,20 +42,22 @@ export class Sysmlv2Editor {
     return this.model.onDidChangeContent(() => listener(this.model.getValue()))
   }
 
-  setDiagnostics(diagnostics: Sysmlv2Diagnostic[]) : void {
+  setDiagnostics(diagnostics: Sysmlv2Diagnostic[]): void {
     const markers = diagnostics.map((d) => ({
       message: d.message,
       severity: SEVERITY[d.severity],
       startLineNumber: d.startLine,
       startColumn: d.startColumn,
       endLineNumber: d.endLine,
-      endColumn: d.endColumn,
+      endColumn: d.endColumn
     }))
     monaco.editor.setModelMarkers(this.model, MARKER_OWNER, markers)
+    this.hover.update(diagnostics)
   }
 
   dispose(): void {
-    this.editor.dispose();
-    this.model.dispose();
+    this.editor.dispose()
+    this.model.dispose()
+    this.hover.dispose()
   }
 }

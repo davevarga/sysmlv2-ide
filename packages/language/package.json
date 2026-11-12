@@ -10,7 +10,8 @@
     "langium:generate": "langium generate",
     "langium:watch": "langium generate --watch",
     "build": "langium generate && tsc -b tsconfig.json",
-    "clean": "rm -rf dist src/language/generated"
+    "clean": "rm -rf dist src/language/generated",
+    "typecheck:test": "tsc -p test/tsconfig.json"
   },
   "dependencies": {
     "langium": "^4.4.0"
